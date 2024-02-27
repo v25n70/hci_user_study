@@ -1,0 +1,164 @@
+<html>
+<head>
+
+	<title>Ticket Management System</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+	.footer {
+		position: fixed;
+		left: 0px;
+		bottom: 0px;
+		width: 100%;
+		padding-top: 10px;
+		padding-bottom: 40px;
+	}
+	.container {
+		width: 80%;
+		margin: auto;
+	}
+	button span {
+		padding-right: 10px;
+	}
+</style>
+
+</head>
+<body>
+
+	<div class="container">
+		<br>
+		<div class="w3-row">
+			<div class="w3-col s8">
+				<h1>Ticket View</h1>
+			</div>
+			<div class="w3-col s4">
+				<br>
+				Welcome, John! 👋
+			</div>
+		</div>
+
+		<table class="w3-table">
+			<tr>
+				<td>Subject</td>
+				<td>Incorrect Billing</td>
+			</tr>
+			<tr>
+				<td>Person</td>
+				<td>Jessie James</td>
+			</tr>
+		</table>
+
+		<br>
+
+		<h2>Messages  </h2>
+		<table class="w3-table w3-striped">
+			<tr>
+				<th>Date</th>
+				<th>Message</th>
+			</tr>
+			<tr>
+				<td>02/02/2024</td>
+				<td>Ticket opened</td>
+			</tr>
+			<tr>
+				<td>05/02/2024</td>
+				<td>Case assigned to John</td>
+			</tr>
+		</table>
+		<button class="w3-button w3-blue" onclick="add_message()"><span>Ctrl 2</span> Add Message</button>
+
+		<br><br>
+
+		<h2>Emails </h2>
+		<table class="w3-table w3-striped">
+			<tr>
+				<th>Date</th>
+				<th>Email</th>
+				<th>Subject</th>
+			</tr>
+			<tr>
+				<td>02/02/2024</td>
+				<td>jessie.james@gmail.com</td>
+				<td>Incorrect Billing Entry</td>
+			</tr>
+			<tr>
+				<td>05/02/2024</td>
+				<td>jessie.james@gmail.com</td>
+				<td>Another incorrect billing entry</td>
+			</tr>
+		</table>
+
+	</div>
+
+	<div class="footer">
+		<div class="container">
+			<div class="w3-row">
+				<div class="w3-col s3">
+					<button class="w3-button w3-blue" onclick="mark_closed()">
+						<span>Ctrl 1</span>
+						Mark Closed
+					</button>
+				</div>
+				<div class="w3-col s3">
+					<br>
+				</div>
+				<div class="w3-col s3">
+					<br>
+				</div>
+				<div class="w3-col s3">
+					<button class="w3-button w3-green" onclick="home()">
+						<span>ESC</span>
+						Home
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
+<script>
+
+function goto_url(url) {
+	const minDelay = 30;
+	const maxDelay = 90;
+	const randomDelay = Math.floor(Math.random() * (maxDelay - minDelay + 1)) + minDelay;
+	setTimeout(() => {
+		window.location = url;
+	}, randomDelay);
+}
+
+function mark_closed() {
+	alert("Ticket marked as closed!");
+}
+
+function add_message() {
+	goto_url("add_message.html");
+}
+
+function home() {
+	goto_url("home.html");
+}
+
+hotkeys('ctrl+1,ctrl+2,escape', function(event, handler) {
+	switch (handler.key) {
+		case 'ctrl+1':
+		{
+			mark_closed();
+			break;
+		}
+		case 'ctrl+2':
+		{
+			add_message();
+			break;
+		}
+		case 'escape': {
+			home();
+			break;
+		}
+	}
+});
+
+</script>
+
+</body>
+</html>
