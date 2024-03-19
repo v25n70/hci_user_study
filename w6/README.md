@@ -1,1 +1,8 @@
-# This file just exists to create a folder on GitHub without having to go through the trouvle of making an access token.
+# Setup
+
+Run the following commands, making sure port 8080 is avaliable. If port 8080 is not avaliable, you can change the port at the last few liens of  of src/index.js.
+
+`````
+npm i
+node .
+`````
