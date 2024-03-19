@@ -1,0 +1,139 @@
+<html>
+<head>
+
+	<title>Ticket Management System</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+	.footer {
+		position: fixed;
+		left: 0px;
+		bottom: 0px;
+		width: 100%;
+		padding-top: 10px;
+		padding-bottom: 40px;
+	}
+	.container {
+		width: 80%;
+		margin: auto;
+	}
+	button span {
+		padding-right: 10px;
+	}
+	.box {
+		margin: 10px;
+		padding: 10px;
+		cursor: pointer;
+	}
+	.box h1 {
+		text-align: center;
+
+	}
+	.box h2 {
+		font-size: 14pt;
+		text-align: right;
+		padding-right: 10px;
+	}
+</style>
+
+</head>
+<body>
+
+	<div class="container">
+		<br>
+		<div class="w3-row">
+			<div class="w3-col s8">
+				<br>
+			</div>
+			<div class="w3-col s4">
+				<br>
+				Welcome, John! 👋
+			</div>
+		</div>
+
+		<br><br>
+		<center><h1>Quick Navigate</h1></center>
+		<br><br><br>
+
+		<div class="w3-row">
+			<div class="w3-col s3">
+				<div class="box w3-teal" onclick="search_ticket();">
+					<h1>Search<br>Ticket</h1>
+					<h2>Ctrl 1</h2>
+				</div>
+			</div>
+			<div class="w3-col s3">
+				<div class="box w3-black" onclick="enter_email();">
+					<h1>Enter<br>Email</h1>	
+					<h2>Ctrl 2</h2>
+				</div>
+			</div>
+			<div class="w3-col s3">
+				<div class="box w3-blue" onclick="recently_closed();">
+					<h1>Recently<br>Closed</h1>
+					<h2>Ctrl 3</h2>
+				</div>
+			</div>
+			<div class="w3-col s3">
+				<div class="box w3-teal" onclick="new_ticket();">
+					<h1>New<br>Ticket</h1>
+					<h2>Ctrl 4</h2>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+<script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
+<script>
+
+function goto_url(url) {
+	const minDelay = 30;
+	const maxDelay = 90;
+	const randomDelay = Math.floor(Math.random() * (maxDelay - minDelay + 1)) + minDelay;
+	setTimeout(() => {
+		window.location = url;
+	}, randomDelay);
+}
+
+function search_ticket() {
+	goto_url("/ticket/search");
+}
+
+function enter_email() {
+	goto_url("/email/add");
+}
+
+function recently_closed() {
+	goto_url("/ticket/recently_closed");
+}
+
+function new_ticket() {
+	goto_url("/ticket/new");
+}
+
+hotkeys('ctrl+1,ctrl+2,ctrl+3,ctrl+4', function(event, handler) {
+	switch (handler.key) {
+		case 'ctrl+1': {
+			search_ticket();
+			break;
+		}
+		case 'ctrl+2': {
+			enter_email();
+			break;
+		}
+		case 'ctrl+3': {
+			recently_closed();
+			break;
+		}
+		case 'ctrl+4': {
+			new_ticket();
+			break;
+		}
+	}
+});
+
+</script>
+</body>
+</html>

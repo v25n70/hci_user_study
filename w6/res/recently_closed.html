@@ -1,0 +1,127 @@
+<html>
+<head>
+
+	<title>Ticket Management System</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+	.footer {
+		position: fixed;
+		left: 0px;
+		bottom: 0px;
+		width: 100%;
+		padding-top: 10px;
+		padding-bottom: 40px;
+	}
+	.container {
+		width: 80%;
+		margin: auto;
+	}
+	button span {
+		padding-right: 10px;
+	}
+</style>
+
+</head>
+<body>
+
+	<div class="container">
+		<br>
+		<div class="w3-row">
+			<div class="w3-col s8">
+				<h1>Recently Closed</h1>
+			</div>
+			<div class="w3-col s4">
+				<br>
+				Welcome, John! 👋
+			</div>
+		</div>
+
+		
+		<br>
+
+		<table class="w3-table w3-striped">
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Date</th>
+				<th>Subject</th>
+				<th>Status</th>
+			</tr>
+			$results_code$
+		</table>
+
+	</div>
+
+	<div class="footer">
+		<div class="container">
+			<div class="w3-row">
+				<div class="w3-col s3">
+					<br>
+				</div>
+				<div class="w3-col s3">
+					<br>
+				</div>
+				<div class="w3-col s3">
+					<br>
+				</div>
+				<div class="w3-col s3">
+					<button class="w3-button w3-green" onclick="home()">
+						<span>ESC</span>
+						Home
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
+<script>
+
+function goto_url(url) {
+	const minDelay = 30;
+	const maxDelay = 90;
+	const randomDelay = Math.floor(Math.random() * (maxDelay - minDelay + 1)) + minDelay;
+	setTimeout(() => {
+		window.location = url;
+	}, randomDelay);
+}
+
+function goto_profile(id) {
+	goto_url("/ticket/view?id=" + id);
+}
+
+function home() {
+	goto_url("/");
+}
+
+var id_cache = $id_cache$;
+
+hotkeys('ctrl+1,ctrl+2,ctrl+3,escape', function(event, handler) {
+	switch (handler.key) {
+		case 'ctrl+1':
+		{
+			goto_profile(id_cache[0]);
+			break;
+		}
+		case 'ctrl+1':
+		{
+			goto_profile(id_cache[1]);
+			break;
+		}
+		case 'ctrl+1':
+		{
+			goto_profile(id_cache[2]);
+			break;
+		}
+		case 'escape': {
+			home();
+			break;
+		}
+	}
+});
+
+</script>
+
+</body>
+</html>
